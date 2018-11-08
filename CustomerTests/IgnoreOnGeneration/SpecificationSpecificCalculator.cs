@@ -26,7 +26,7 @@ namespace CustomerTests.IgnoreOnGeneration
         }
 
         public void Sum() => 
-            Result = 3;
+            Result = x + y;
 
     }
 }

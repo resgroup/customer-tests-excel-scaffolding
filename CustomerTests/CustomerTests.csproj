@@ -166,7 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IgnoreOnGeneration\SpecificationSpecificCalculator.cs" />
-    <Compile Include="Sum\Sum 1 and 2.cs" />
+    <Compile Include="Sum\Sum 1 and 3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ExcelTests\Sum.xlsx" />

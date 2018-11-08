@@ -12,7 +12,7 @@ using CustomerTests.IgnoreOnGeneration;
 namespace CustomerTests.Sum
 {
     [TestFixture]
-    public class Sum_1_and_2 : SpecificationBase<SpecificationSpecificCalculator>, ISpecification<SpecificationSpecificCalculator>
+    public class Sum_1_and_3 : SpecificationBase<SpecificationSpecificCalculator>, ISpecification<SpecificationSpecificCalculator>
     {
         public override string Description()
         {
