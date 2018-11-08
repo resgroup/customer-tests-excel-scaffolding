@@ -1,7 +1,7 @@
 ﻿using CustomerTestsExcel;
 using System;
 
-namespace SutTests.IgnoreOnGeneration
+namespace CustomerTests.IgnoreOnGeneration
 {
     public class SpecificationSpecificCalculator : ReportsSpecificationSetup
     {

@@ -170,5 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ExcelTests\Sum.xlsx" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

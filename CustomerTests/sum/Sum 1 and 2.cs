@@ -5,11 +5,11 @@ using System.Text;
 using NUnit.Framework;
 using CustomerTestsExcel;
 using System.Linq.Expressions;
-using SutTests;
+using CustomerTests;
 
-using SutTests.IgnoreOnGeneration;
+using CustomerTests.IgnoreOnGeneration;
 
-namespace SutTests.Sum
+namespace CustomerTests.Sum
 {
     [TestFixture]
     public class Sum_1_and_2 : SpecificationBase<SpecificationSpecificCalculator>, ISpecification<SpecificationSpecificCalculator>
