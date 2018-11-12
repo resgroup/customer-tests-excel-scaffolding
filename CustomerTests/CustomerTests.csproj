@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.11.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.11.0\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,10 +8,12 @@
     <ProjectGuid>{3C412C95-650A-4115-A062-FA0A44EDD184}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SutTests</RootNamespace>
-    <AssemblyName>SutTests</AssemblyName>
+    <RootNamespace>CustomerTests</RootNamespace>
+    <AssemblyName>CustomerTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -161,7 +164,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SystemUnderTest\SystemUnderTest.csproj">
       <Project>{1c81f710-10f5-4e37-bef2-985c40ec06b6}</Project>
-      <Name>Sut</Name>
+      <Name>SystemUnderTest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -170,5 +173,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ExcelTests\Sum.xlsx" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.11.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.11.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
 </Project>
