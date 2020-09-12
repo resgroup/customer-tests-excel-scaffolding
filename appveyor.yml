@@ -8,7 +8,7 @@ build_script:
  - nuget restore CustomerTestsExcel.sln -verbosity quiet
  # Ensure that the Excel tests can round trip to C#
  # Regenerate the sample tests from the excel (requires GenerateCodeFromExcelTest.exe)
- - msbuild CustomerTestsExcel.sln /verbosity:minimal /property:Configuration=Release   
+ - msbuild CustomerTestsExcelScaffolding.sln /verbosity:minimal /property:Configuration=Release   
  - dotnet test
  - AppveyorGenerateTests.bat
  - msbuild CustomerTestsExcel.sln /verbosity:minimal /property:Configuration=Release
