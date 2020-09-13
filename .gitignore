@@ -231,3 +231,4 @@ Web Applications/GEOleRes/Flex/bin-debug/*
 .idea/
 *.pyc
 GenerateCodeFromExcelTest/Properties/launchSettings.json
+*.dll
