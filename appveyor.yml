@@ -14,7 +14,7 @@ build_script:
  - dir
  - cd customertestsexcel
  - dir
- - cd 2.0.3
+ - cd 2.0.4
  - dir
  - cd tools
  - dir
