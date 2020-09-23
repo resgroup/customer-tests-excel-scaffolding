@@ -10,9 +10,17 @@ build_script:
  # Regenerate the sample tests from the excel (have to build first so that SampleSystemUnderTest.dll exists)
  - dotnet build CustomerTestsExcelScaffolding.sln   
  - dir
- - pushd packages\customertestsexcel\2.0.3\tools\GenerateCodeFromExcelTest\
+ - cd packages\customertestsexcel\2.0.3\tools\GenerateCodeFromExcelTest\
  - dir
- - popd 
+ - cd customertestsexcel
+ - dir
+ - cd 2.0.3
+ - dir
+ - cd tools
+ - dir
+ - cd GenerateCodeFromExcelTest
+ - dir
+ - cd C:\projects\customer-tests-excel-scaffolding\
  - AppveyorGenerateTests.bat
  - dotnet build CustomerTestsExcelScaffolding.sln  
  # run the tests, so that they re create the Excel Spreadsheets (requires some environment variables to be set)
