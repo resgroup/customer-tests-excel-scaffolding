@@ -40,16 +40,10 @@ namespace SampleTests.Setup
         public Double SecondValue { get; private set; }
         public Operation Operation { get; private set; }
 
-
-
-
-
         public SpecificationSpecificCalculator()
         {
 
         }
-
-
 
         internal SpecificationSpecificCalculator FirstValue_of(Double firstValue)
         {
@@ -77,10 +71,6 @@ namespace SampleTests.Setup
 
             return this;
         }
-
-
-
-
 
     }
 }

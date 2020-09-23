@@ -15,19 +15,46 @@ using SampleSystemUnderTest.Misc;
 
 namespace SampleTests.Setup
 {
+    // A class with the name VermeulenNearWakeLengthInput was found in the Excel tests, but
+    // no matching interface could be found in the assembliesUnderTest that were
+    // specified on the command line parameters to GenerateCodeFromExcelTest. This file
+    // is here so that the generated code can compile, to provide an example of
+    // the custom file that you need to create, and point out anything that would stop
+    // it matching an interface in your system under test.
+    
+    // The easiest thing to do is to make the names in the Excel match the names of your
+    // Interfaces and their properties, and let the framework generate the Specification 
+    // Specific setup classes for you. However you can write custom ones if you would
+    // prefer, and they do allow you do some more esoteric things, such as instantiating
+    // classes instead of mocking interfaces.
+    // You can see examples of excel tests and matching interfaces in the SampleTests
+    // and SampleSystemUnderTest folders of the framework repository
+    // - https://github.com/resgroup/customer-tests-excel/tree/master/SampleTests
+    // - https://github.com/resgroup/customer-tests-excel/tree/master/SampleSystemUnderTest
+
+    // Custom classes should go in the 'Setup' folder.
+    // If the custom class filename is 'SpecificationSpecificVermeulenNearWakeLengthInputOverride.cs',
+    // then it will be used instead of this function. If it is called something else,
+    // say 'SpecificationSpecificVermeulenNearWakeLengthInputPartial.cs', then this class will remain, and
+    // the custom class can add to it.
+
+    // Please see VermeulenNearWakeLengthInput.cs for an example of setting up simple and
+    // complex properties
+    // - https://github.com/resgroup/customer-tests-excel/blob/master/SampleTests/Setup/VermeulenNearWakeLengthInput.cs
+    // Please see Group.cs for an example of setting up list / table properties
+    // - https://github.com/resgroup/customer-tests-excel/blob/master/SampleTests/Setup/Cargo.cs
+
     public partial class SpecificationSpecificVermeulenNearWakeLengthInput : ReportsSpecificationSetup
     {
-        readonly Mock<IVermeulenNearWakeLengthInput> vermeulenNearWakeLengthInput;
+        public Double Velocity { get; private set; }
+        public Double Ambient_Turbulence { get; private set; }
+        public Double RevolutionsPerMinute { get; private set; }
+        public Double Thrust_Coefficient { get; private set; }
 
-        public IVermeulenNearWakeLengthInput VermeulenNearWakeLengthInput =>
-            vermeulenNearWakeLengthInput.Object;
-
-
+        public SpecificationSpecificTurbineGeometry TurbineGeometry { get; private set; }
 
         public SpecificationSpecificVermeulenNearWakeLengthInput()
         {
-            vermeulenNearWakeLengthInput = new Mock<IVermeulenNearWakeLengthInput>();
-
 
         }
 
@@ -35,7 +62,7 @@ namespace SampleTests.Setup
         {
             AddValueProperty(GetCurrentMethod(), velocity);
 
-            vermeulenNearWakeLengthInput.Setup(m => m.Velocity).Returns(velocity);
+            this.Velocity = velocity;
 
             return this;
         }
@@ -44,7 +71,7 @@ namespace SampleTests.Setup
         {
             AddValueProperty(GetCurrentMethod(), ambient_Turbulence);
 
-            vermeulenNearWakeLengthInput.Setup(m => m.Ambient_Turbulence).Returns(ambient_Turbulence);
+            this.Ambient_Turbulence = ambient_Turbulence;
 
             return this;
         }
@@ -53,7 +80,7 @@ namespace SampleTests.Setup
         {
             AddValueProperty(GetCurrentMethod(), revolutionsPerMinute);
 
-            vermeulenNearWakeLengthInput.Setup(m => m.RevolutionsPerMinute).Returns(revolutionsPerMinute);
+            this.RevolutionsPerMinute = revolutionsPerMinute;
 
             return this;
         }
@@ -62,22 +89,19 @@ namespace SampleTests.Setup
         {
             AddValueProperty(GetCurrentMethod(), thrust_Coefficient);
 
-            vermeulenNearWakeLengthInput.Setup(m => m.Thrust_Coefficient).Returns(thrust_Coefficient);
+            this.Thrust_Coefficient = thrust_Coefficient;
 
             return this;
         }
-
 
         internal SpecificationSpecificVermeulenNearWakeLengthInput TurbineGeometry_of(SpecificationSpecificTurbineGeometry turbineGeometry)
         {
             AddClassProperty(new ReportSpecificationSetupClass(GetCurrentMethod(), turbineGeometry));
 
-            vermeulenNearWakeLengthInput.Setup(m => m.TurbineGeometry).Returns(turbineGeometry?.TurbineGeometry);
+            this.TurbineGeometry = turbineGeometry;
 
             return this;
         }
-
-
 
     }
 }

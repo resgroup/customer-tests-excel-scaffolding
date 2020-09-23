@@ -37,9 +37,6 @@ namespace SampleTests.Setup
     public partial class SpecificationSpecificObjectWithPrimiiveLists : ReportsSpecificationSetup
     {
 
-
-
-
         readonly List<SpecificationSpecificInteger> integerListSyntaxs;
         readonly List<SpecificationSpecificFloat> floatListSyntaxs;
         readonly List<SpecificationSpecificString> stringListSyntaxs;
@@ -60,12 +57,6 @@ namespace SampleTests.Setup
             stringTableSyntaxs = new List<SpecificationSpecificString>();
             dateTimeTableSyntaxs = new List<SpecificationSpecificDateTime>();
         }
-
-
-
-
-
-
 
         internal SpecificationSpecificObjectWithPrimiiveLists IntegerListSyntax_of(SpecificationSpecificInteger integerListSyntax)
         {

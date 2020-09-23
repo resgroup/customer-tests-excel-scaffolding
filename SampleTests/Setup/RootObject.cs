@@ -40,16 +40,10 @@ namespace SampleTests.Setup
         public Double Number { get; private set; }
         public String NullableString { get; private set; }
 
-
-
-
-
         public SpecificationSpecificRootObject()
         {
 
         }
-
-
 
         internal SpecificationSpecificRootObject NullableInt_of(Double? nullableInt)
         {
@@ -77,10 +71,6 @@ namespace SampleTests.Setup
 
             return this;
         }
-
-
-
-
 
     }
 }

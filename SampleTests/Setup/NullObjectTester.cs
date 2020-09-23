@@ -37,19 +37,12 @@ namespace SampleTests.Setup
     public partial class SpecificationSpecificNullObjectTester : ReportsSpecificationSetup
     {
 
-
         public SpecificationSpecificHasObjectProperty HasObjectProperty { get; private set; }
-
-
 
         public SpecificationSpecificNullObjectTester()
         {
 
         }
-
-
-
-
 
         internal SpecificationSpecificNullObjectTester HasObjectProperty_of(SpecificationSpecificHasObjectProperty hasObjectProperty)
         {
@@ -59,8 +52,6 @@ namespace SampleTests.Setup
 
             return this;
         }
-
-
 
     }
 }
