@@ -10,7 +10,7 @@ build_script:
  # Regenerate the sample tests from the excel (have to build first so that SampleSystemUnderTest.dll exists)
  - dotnet build CustomerTestsExcelScaffolding.sln   
  - dir
- - cd packages\customertestsexcel\2.0.3\tools\GenerateCodeFromExcelTest\
+ - cd packages
  - dir
  - cd customertestsexcel
  - dir
