@@ -4,7 +4,6 @@ environment:
  CUSTOMER_TESTS_EXCEL_WRITE_TO_EXCEL: true
  CUSTOMER_TESTS_RELATIVE_PATH_TO_EXCELTESTS: ..\..\..\..\SampleTests\ExcelTests
 build_script:
- - echo %CUSTOMER_TESTS_RELATIVE_PATH_TO_EXCELTESTS%
  # Ensure that the Excel tests can round trip to C#
  # Regenerate the sample tests from the excel (have to build first so that SampleSystemUnderTest.dll exists)
  - dotnet build CustomerTestsExcelScaffolding.sln   
