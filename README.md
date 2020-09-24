@@ -1,48 +1,39 @@
-# Customer Tests Excel Scaffolding 
+# Customer Tests Excel Scaffolding Project
+
+[![Build status](https://ci.appveyor.com/api/projects/status/er646fyev64lx1uk?svg=true)](https://ci.appveyor.com/project/RESSoftwareTeam/customer-tests-excel-scaffolding)
 
 This project exists as a quick and easy way to start using [CustomerTestsExcel](https://github.com/resgroup/customer-tests-excel) in a C# solution.
 
-## Playing / experimenting
+You can just download / clone this repo to get a feel for how things work (everything that is supported by the framework is represented at least once in these tests). 
 
-You can just download / clone this repo to get a feel for how things work.
+You can also copy the projects in to your own solutions to get started quickly and easily.
 
-- Download / clone this repo
-- Install the `CustomerTestsExcel` nuget package to `CustomerTests\CustomerTests.csproj` (This can't be done in advance because you might have different packages path set up in Nuget, and then Nuget gets confused)
-- Install the `NUnit3TestAdapter` nuget package to `CustomerTests\CustomerTests.csproj`
+### Excel tests
 
-Follow the instructions in `Generating the C# tests from Excel` and `Generating the Excel Spreadsheet from the C# tests` below to get a feel for generating the C# tests from the Excel spreadsheet and vice versa.
+You can look at the files in [SampleTests\ExcelTests](SampleTests\ExcelTests) to get a feel for the syntax for the Excel syntax. 
 
-## Adding to an existing C# solution
+### C# NUnit tests
 
+You can look at the C# NUnit tests that are created from these excel files. These are in "SampleTests\<Excel Filename>\<Excel Sheet Name>.cs" ([SampleTests\Anova\One Way Anova.cs](SampleTests\Anova\One Way Anova.cs) for example).
 
-### Adding / setting up the scaffold projects
+There are some generated setup files. Most of these are made by looking at the Excel tests and finding matching interfaces in the SampleSystemUnderTest assembly. These are in [SampleTests\Setup\](SampleTests\Setup\) ([SampleTests\Setup\Cargo.cs for example). 
 
-- Download / clone this repo
-- Add `CustomerTests\CustomerTests.csproj` to your solution
-- Install the `CustomerTestsExcel` nuget package to this project (This can't be done in advance because you might have different packages path set up in Nuget, and then Nuget gets confused)
-- Install the `NUnit3TestAdapter` nuget package to this project
-- Add `SystemUnderTest\SystemUnderTest.csproj` to your solution
-- Run the `Sum_1_and_3` test in `CustomerTests.csproj` (it should just work)
-- Add `CreateTests.bat` to your solution, one folder up from wherever you have put `CustomerTests`
+Sometimes the framework will be able to match some, but not all, properties in Excel with a C# interface. In this case it will generate as much as it can, and leave you do to the rest in a partial class. You can see an example of the generated part of this at [SampleTests\Setup\ClassWithCustomProperty.cs](SampleTests\Setup\ClassWithCustomProperty.cs) and an example of the custom side at [SampleTests\Setup\ClassWithCustomPropertyPartial.cs](SampleTests\Setup\ClassWithCustomPropertyPartial.cs)
+
+Sometimes the framework will match properties in Excel with a C# interface, but you would rather it didn't. In this case you can override the automatically generated file with a custom file. If a file exists called "Override<Excel Class Name>.cs", then the framework will generate "<Excel Class Name>.cs.txt" (instead of a .cs file). You can copy and paste things out of this .txt file if it is convenient, and use it as a reference for how the signature of the custom class should look. You can see an example of the generated .txt file at [SampleTests\Setup\Anything.cs.txt](SampleTests\Setup\Anything.cs.txt) and an example of the custom class at [SampleTests\Setup\OverrideAnything.cs](SampleTests\Setup\OverrideAnything.cs)
+
+The root class of each test has to actually do something, and so will usually be creating an object and calling a function. The framework generates the Setup / Given part of these classes, and leaves you to implement the `When` and `Then` parts in a partial class. You can see an example of the generated part of this at [SampleTests\Setup\AnovaCalculator.cs](SampleTests\Setup\AnovaCalculator.cs) and an example of the custom side at [SampleTests\Setup\AnovaCalculatorPartial.cs](SampleTests\Setup\AnovaCalculatorPartial.cs)
 
 ### Generating the C# tests from Excel
 
-This is an optional step, but probably why you're here
+Edit the `/assembliesUnderTest` parameter in [SampleTests\GenerateTests.bat](SampleTests\GenerateTests.bat) to point to wherever SampleSystemUnderTest.dll is compiled to on your computer. This is a bit of an annoyance, but is a requirement of the Reflection / Assembly loading in C#.
 
-- Run `CreateTests.bat` to regenerate the `Sum_1_and_3` test (you may need to change the path to the exe)
-- Run the `Sum_1_and_3` test again (it should still work after being regenerated)
-- You can then change the Excel spreadsheet and regenerate the tests, to confirm that the changes are propogated. The `X`, `Y` and `Result` properties can all be changed without requiring any changes to `SystemUnderTest`. 
-- You can also create a new sheet with a variation on the test, to check that a new C# test is generated. Make sure to change the Specification name (Cell B2) to be unique.
+Then run [SampleTests\GenerateTests.bat](SampleTests\GenerateTests.bat), which will regenerate all the files in [SampleTests\Setup\](SampleTests\Setup\)
 
-### Generating the Excel Spreadsheet from the C# tests
+### Generating the Excel tests from C#
 
-This is an optional step
+Set an `CUSTOMER_TESTS_EXCEL_WRITE_TO_EXCEL` enviroment variable with the value of `true`
 
-- Add an `CUSTOMER_TESTS_EXCEL_WRITE_TO_EXCEL` enviroment variable with the value of `true`
-- Add an `CUSTOMER_TESTS_RELATIVE_PATH_TO_EXCELTESTS` enviroment variable with the value of `..\..\ExcelTests` (This is the relative path from the output directory of `CustomerTests.csproj` to `CustomerTests\ExcelTests`, and allows you to change the output directory if you so wish)
-- Run the `Sum_1_and_3` test in `CustomerTests.csproj`
-- Check that `ExcelTests\Sum.xlsx` has been updated and looks sensible
-- Run `CreateTests.bat` to make sure that the changes are round trippable.
+Set an `CUSTOMER_TESTS_RELATIVE_PATH_TO_EXCELTESTS` enviroment variable with the value of `..\..\..\..\SampleTests\ExcelTests` (This is either an absolute path, or a relative path from the output directory of `CustomerTests.csproj` to `CustomerTests\ExcelTests`)
 
-
-
+Run the tests in visual studio (or using `dotnet test`). Whilst running, the tests will recreate the Excel files. This is useful if you want to use C# refactoring tools, to say rename a variable, and then update the Excel files automatically.
