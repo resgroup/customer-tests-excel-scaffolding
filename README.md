@@ -2,7 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/er646fyev64lx1uk?svg=true)](https://ci.appveyor.com/project/RESSoftwareTeam/customer-tests-excel-scaffolding)
 
-This project exists as a quick and easy way to start using [CustomerTestsExcel](https://github.com/resgroup/customer-tests-excel) in a C# solution.
+This project exists as a quick and easy way to start using [CustomerTestsExcel](https://github.com/resgroup/customer-tests-excel) in a C# solution.  Please see [Introducing CustomerTestsExcel](https://dev.to/ceddlyburge/introducing-customertestsexcel-4f7b) for more details.
 
 You can just download / clone this repo to get a feel for how things work (everything that is supported by the framework is represented at least once in these tests). 
 
